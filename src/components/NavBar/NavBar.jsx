@@ -11,7 +11,7 @@ const NavBar = () =>{
       return (
         <Navbar expand="lg" className="bg-secondary-subtle">
           <Container >
-            <Navbar.Brand href="#">Altus Automatización</Navbar.Brand>
+            <Navbar.Brand href="#">Vitec Automatización</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
