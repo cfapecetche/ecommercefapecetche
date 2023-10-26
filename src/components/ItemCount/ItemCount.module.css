@@ -1,0 +1,11 @@
+.Counter{
+  
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    text-align: center;
+    white-space: nowrap;
+    
+    }
+    

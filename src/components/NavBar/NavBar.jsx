@@ -4,43 +4,33 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from "../CartWidget/CartWidget"
+import { NavLink, useNavigate } from 'react-router-dom'
 
 
 
 const NavBar = () =>{
+  const navigate = useNavigate()
       return (
         <Navbar expand="lg" className="bg-secondary-subtle">
           <Container >
-            <Navbar.Brand href="#">Vitec Automatización</Navbar.Brand>
+            <Navbar.Brand ><h1 onClick={() => navigate('/')}>Vitec Automatización</h1></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
-              <Nav
-                className="me-auto my-2 my-lg-0"
-                style={{ maxHeight: '100px' }}
-                navbarScroll
-              >
-                <Nav.Link href="#action1">PLC</Nav.Link>
-                <Nav.Link href="#action2">HMI</Nav.Link>
-                <Nav.Link href="#action3">Variadores</Nav.Link>
-                <Nav.Link href="#action4">Conectividad</Nav.Link>
-                <Nav.Link href="#action5">Educativo</Nav.Link>
-                <NavDropdown title="Perifericos" id="navbarScrollingDropdown">
-                  <NavDropdown.Item href="#action3">Inductivos</NavDropdown.Item>
-                  <NavDropdown.Item href="#action4">
-                    Capacitivos
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">
-                    Opticos
-                  </NavDropdown.Item>
-                </NavDropdown>
             
+             <Nav variant="pills" style={{backgroundColor:'#adb5bd'}}>
+          
+                <Nav.Link href="#first" onClick={() => navigate('/category/plc')}>PLC</Nav.Link>
+                <Nav.Link href="#link1" onClick={() => navigate('/category/hmi')}>MHI</Nav.Link>
+                <Nav.Link href="#link2" onClick={() => navigate('/category/variadores')}>Variadores</Nav.Link>
+                <Nav.Link href="#link3" onClick={() => navigate('/category/conectividad')}>Conectividad</Nav.Link>
+                <Nav.Link href="#link4" onClick={() => navigate('/category/educativo')}>Educativo</Nav.Link>
+                               
                 
               </Nav>
-              <button >
+              <Button variant='outline-secondary' >
               
               <CartWidget />
-              </button>
+              </Button>
               
             </Navbar.Collapse>
           </Container>

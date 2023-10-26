@@ -1,18 +1,29 @@
   
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './components/NavBar/NavBar'
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/NavBar/NavBar';
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 function App() {
   return (
-    <>
+    
      <div className = "App">
-      <Navbar />
-      <ItemListContainer greeting={'Bienvenidos'}/>
+       <BrowserRouter>
+            <Navbar />
+          <Routes>
+            <Route path='/' element={<ItemListContainer greeting={'Bienvenidos'}/>}/>
+            <Route path='/category/:categoryId' element={<ItemListContainer />}/>
+            <Route path='/item/:itemId' element={<ItemDetailContainer />}/>
+            <Route path='*' element={<h1>404 NOT FOUND</h1>}/>
+          </Routes>
+         
 
-     </div>
+       </BrowserRouter>   
+      </div>
       
-    </>
+      
+    
   )
 }
 
