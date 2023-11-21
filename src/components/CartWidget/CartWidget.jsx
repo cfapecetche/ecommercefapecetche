@@ -1,13 +1,23 @@
 
 import Button from 'react-bootstrap/Button';
 import cart from './assets/cart.svg'
+import { useCart } from '../../context/CartContext'
+import { useNavigate } from 'react-router-dom'
 
 
 const CartWidget = () => {
-      return(
+
+      const { totalQuantity } = useCart()
+
+    const navigate = useNavigate()
+
+    return (
+
        <div>
-       <img src={cart} alt="cart-widget" /> 
-        0
+           <Button variant="secondary" onClick={() => navigate('/cart')}>
+           <img src={cart} alt="cart-widget" /> 
+           {totalQuantity}
+           </Button>
        </div>
 
 
@@ -17,3 +27,4 @@ const CartWidget = () => {
 }
 
 export default CartWidget
+

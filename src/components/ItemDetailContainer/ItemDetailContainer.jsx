@@ -1,29 +1,47 @@
+import Spinner from 'react-bootstrap/Spinner';
 import Placeholder from 'react-bootstrap/Placeholder';
 import {useState, useEffect} from 'react';
-import {getProductsById} from '../../asyncMock';
+import { getProductById } from "../../services/firebase/firestore/products"
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () =>
 {
-const[products, setProducts] = useState(null) 
+const[product, setProduct] = useState(null) 
+const [loading, setLoading] = useState(true)
 
 const{itemId} = useParams()
 
 useEffect(()=> {
-     getProductsById(itemId)
+
+    setLoading(true)
+
+    getProductById(itemId)
          .then(response => {
-               setProducts(response)
+               setProduct(response)
          })
          .catch(error =>{ 
-            console.error(error)
+            console.log(error)
          })
+         .finally(() => {
+            setLoading(false)
+        })
 }, [itemId])
 
 
-return(
+if(loading) {
+    return ( <div className="d-flex justify-content-around"> 
+            <Spinner animation="border" variant="secondary" />
+</div> ) 
+}
+
+if(!product) {
+    return <h1>El producto no existe</h1>
+}
+
+return (
     <div className="d-flex justify-content-around"> 
-        <ItemDetail {...products}/>
+        <ItemDetail {...product}/>
     </div>
 
 
